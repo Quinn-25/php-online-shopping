@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Category
+{% endblock %}
+
+{% block body %}
+	<!-- Start Contact Area -->
+	<section class="htc__contact__area ptb--120 bg__white">
+		<div class="container">
+
+			<div class="col-md-8">
+				<div class="htc__contact__container">
+					{% if message is defined %}
+						<h1>{{message}}</h1>
+					{% endif %}
+					{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+					<br><br>
+					<div class="single-contact-form">
+						{{ form_label (form.name) }}
+						<div class="contact-box subject">
+							{{ form_widget(form.name, {'attr': {'placeholder': 'Product name'}}) }}
+						</div>
+					</div>
+					<br>
+					<div class="single-contact-form">
+						{{ form_label (form.description) }}
+						<div class="contact-box subject">
+							{{ form_widget(form.description, {'attr': {'placeholder': 'Product description'}}) }}
+						</div>
+					</div>
+
+					<br>
+					<div class="contact-btn">
+						<button type="button" class="fv-btn" onclick="window.location.href='/categories'" style="margin-right: 20px;">Back</button>
+						{{ form_widget(form.save) }}
+					</div>
+
+					{{ form_rest(form) }}
+					{{ form_end(form) }}
+
+				</div>
+			</div>
+			<div class="col-md-4">
+				<img src="https://img.freepik.com/free-vector/software-update-illustration_108061-429.jpg?size=338&ext=jpg">
+			</div>
+		</div>
+	</section>
+	<!-- End Contact Area -->
+{% endblock %}

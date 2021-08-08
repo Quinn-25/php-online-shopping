@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Production
+{% endblock %}
+
+{% block body %}
+	<!-- Start Contact Area -->
+	<section class="htc__contact__area ptb--120 bg__white">
+		<div class="container">
+			<div class="col-md-6">
+				<div class="htc__contact__container">
+					{% if message is defined %}
+						<h1>{{message}}</h1>
+					{% endif %}
+					{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+					<div class="single-contact-form">
+						{{ form_label (form.name) }}
+						<div class="contact-box subject">
+							{{ form_widget(form.name, {'attr': {'placeholder': 'Product name'}}) }}
+						</div>
+					</div>
+					<div class="single-contact-form">
+						{{ form_label (form.price) }}
+						<div class="contact-box subject">
+							{{ form_widget(form.price, {'attr': {'placeholder': 'Product price'}}) }}
+						</div>
+					</div>
+					<div class="single-contact-form">
+						{{ form_label (form.quantity) }}
+						<div class="contact-box subject">
+							{{ form_widget(form.quantity, {'attr': {'placeholder': 'Product quantity'}}) }}
+						</div>
+					</div>
+					<div class="single-contact-form">
+						{{ form_label (form.image) }}
+						<div class="contact-box subject">
+							{{ form_widget(form.image, {'attr': {'placeholder': 'Product image'}}) }}
+						</div>
+					</div>
+					<div class="single-contact-form">
+						{{ form_label (form.description) }}
+						<div class="contact-box subject">
+							{{ form_widget(form.description, {'attr': {'placeholder': 'Product description'}}) }}
+						</div>
+					</div>
+
+					<div class="single-contact-form">
+						{{ form_label (form.category) }}
+						<div class="contact-box subject">
+							{{ form_widget(form.category) }}
+						</div>
+					</div>
+					<br>
+					<div class="contact-btn">
+						<button type="button" class="fv-btn" onclick="window.location.href='/manageProducts'" style="margin-right: 20px;">Back</button>
+						{{ form_widget(form.save) }}
+					</div>
+
+					{{ form_rest(form) }}
+					{{ form_end(form) }}
+
+				</div>
+			</div>
+			<div class="col-md-6">
+				<img style="margin-left: 15vh;" width="1100px" src="https://userscontent2.emaze.com/images/8ea675f8-c944-4055-b37f-13850321149b/9afdd696d1f3a042777e56bed53decd8.jpg">
+			</div>
+		</div>
+	</section>
+	<!-- End Contact Area -->
+{% endblock %}

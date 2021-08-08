@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of categories
+{% endblock %}
+
+{% block body %}
+	<!-- wishlist-area start -->
+	<div class="wishlist-area ptb--120 bg__white">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="wishlist-content">
+						<div class="contact-btn">
+							<button class="fv-btn" onclick="window.location.href='/addProduct'">Add new product</button>
+							<br><br>
+						</div>
+						<form action="#">
+							<div class="wishlist-table table-responsive">		
+								{% if error is defined %}
+									<h1>{{error}}</h1>
+								{% else %}
+									<table>
+										<thead>
+											<tr>
+												<th class="product-remove">
+													<span class="nobr">Remove</span>
+												</th>
+												<th class="product-stock-stauts">
+													<span class="nobr">
+														Image
+													</span>
+												</th>
+												<th class="product-stock-stauts">
+													<span class="nobr">
+														Name
+													</span>
+												</th>
+												<th class="product-name">
+													<span class="nobr">
+														Price
+													</span>
+												</th>
+												<th class="product-stock-stauts">
+													<span class="nobr">
+														Quantity
+													</span>
+												</th>
+												<th class="product-stock-stauts">
+													<span class="nobr">
+														Description
+													</span>
+												</th>
+												<th class="product-stock-stauts">
+													<span class="nobr">
+														Update
+													</span>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for item in products %}
+												<tr>
+													<td class="product-remove">
+														<a href="{{ path('delete_product', {'id': item.id}) }}" onclick="return confirm('are u sure?')">×</a>
+													</td>
+													<td class="product-stock-status">
+														<a href="{{ path('get_product', {'id': item.id}) }}"><img src="{{ item.image }}"></a>
+													</td>
+													<td class="product-stock-status">
+														<span class="wishlist-in-stock">{{ item.name }}</span>
+													</td>
+																<td class="product-stock-status">
+														<span class="wishlist-in-stock">${{ item.price }}</span>
+													</td>
+																<td class="product-stock-status">
+														<span class="wishlist-in-stock">{{ item.quantity }}</span>
+													</td>
+																<td class="product-stock-status">
+														<span class="wishlist-in-stock">{{ item.description }}</span>
+													</td>
+													<td class="product-add-to-cart">
+														<a href="{{ path('update_product', {'id': item.id}) }}">Update</a>
+													</td>
+												</tr>
+											{% endfor %}
+
+										</tbody>
+
+									</table>
+								{% endif %}
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- wishlist-area end -->
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categories
+{% endblock %}
+
+{% block body %}
+	<!-- wishlist-area start -->
+	<div class="wishlist-area ptb--120 bg__white">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="wishlist-content">
+						<div class="contact-btn">
+							<button class="fv-btn" onclick="window.location.href='/addCategory'">Add new category</button>
+							<br><br>
+						</div>
+						<form action="#">
+							<div class="wishlist-table table-responsive">
+								<table>
+									<thead>
+										<tr>
+											<th class="product-remove">
+												<span class="nobr">Remove</span>
+											</th>
+											<th class="product-stock-stauts">
+												<span class="nobr">
+													Category Name
+												</span>
+											</th>
+											<th class="product-name">
+												<span class="nobr">
+													Description
+												</span>
+											</th>
+											<th class="product-add-to-cart">
+												<span class="nobr"><a href="/product/manage">Update</a></span>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for item in categories %}
+											<tr>
+												<td class="product-remove">
+													<a href="{{ path('delete_category', {'id': item.id}) }}">×</a>
+												</td>
+												<td class="product-stock-status">
+													<span class="wishlist-in-stock">{{ item.name }}</span>
+												</td>
+												<td class="product-name">
+													<a href="#">{{ item.description }}
+														suscipit</a>
+												</td>
+												<td class="product-add-to-cart">
+													<a href="{{ path('update_category', {'id': item.id}) }}">
+														Update</a>
+												</td>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- wishlist-area end -->
+{% endblock %}

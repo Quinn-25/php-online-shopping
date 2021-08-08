@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Products
+{% endblock %}
+
+{% block body %}
+	<!-- Start Our Product Area -->
+	<section class="htc__product__area shop__page ptb--130 bg__white">
+		<div class="container">
+			<div
+				class="htc__product__container">
+				<!-- Start Product MEnu -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="filter__menu__container">
+							<div class="product__menu">
+								<button data-filter="*" class="is-checked">All</button>
+								{% if categories is defined %}
+									{% for item in categories %}
+										<button data-filter=".cat--1">{{ item.name }}</button>
+									{% endfor %}
+								{% endif %}							
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Product Menu -->
+				<div class="row">
+					<div class="product__list another-product-style">
+						{% if error is defined %}
+							<div class="col-md-12">
+								<br><br><h2>{{error}}</h2>
+							</div>
+						{% else %}
+							{% for item in products %}
+								<!-- Start Single Product -->
+								<div class="col-md-3 single__pro col-lg-3 cat--1 col-sm-4 col-xs-12">
+									<div class="product foo">
+										<div class="product__inner">
+											<div class="pro__thumb">
+												<a href="{{ path('get_product', {'id': item.id}) }}">
+													<img src="{{item.image}}" alt="product images">
+												</a>
+											</div>
+										</div>
+										<div class="product__details">
+											<h2>
+												<a href="product-details.html">{{item.name}}</a>
+											</h2>
+											<ul class="product__price">
+												<li class="new__price">${{item.price}}</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- End Single Product -->
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Our Product Area -->
+{% endblock %}
