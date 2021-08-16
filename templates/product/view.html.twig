@@ -16,7 +16,7 @@
                       <div class="product__big__images">
                           <div class="portfolio-full-image tab-content">
                               <div role="tabpanel" class="tab-pane fade in active product-video-position" id="img-tab-1">
-                                  <img src="{{ product.image }}" alt="full-image" width="400" height="400">
+                                  <img src="{{ app.request.schemeAndHttpHost }}/images/products/{{product.image}}" alt="full-image" width="400" height="400">
                                   <div class="product-video">
                                       <a class="video-popup" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
                                           <i class="zmdi zmdi-videocam"></i> View Video
@@ -164,7 +164,7 @@
                               <!-- Start Single Review -->
                               <div class="pro__review ans">
                                   <div class="review__thumb">
-                                      <img src="images/review/2.jpg" alt="review images">
+                                      <img src="{{ app.request.schemeAndHttpHost }}/images/review/2.jpg" alt="review images">
                                   </div>
                                   <div class="review__details">
                                       <div class="review__info">

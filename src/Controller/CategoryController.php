@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Product;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -126,9 +127,16 @@ class CategoryController extends AbstractController
 	/**
 	 * @Route("deleteCategory/{id}", methods={"GET","POST"}, name="delete_category")
 	 */
-	public function deleteCategory(Category $category)
+	public function deleteCategory(Category $category, CategoryRepository $categoies)
 	{
 		try {
+			$products = $category->getProducts();
+
+			if (count($products) > 0) {
+				$this->addFlash("Info", "Cannot delete this category");
+				return $this->redirectToRoute('get_categories');
+			}
+
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->remove($category);
 			$entityManager->flush();

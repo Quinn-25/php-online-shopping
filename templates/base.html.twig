@@ -16,30 +16,30 @@
 			<meta
 			name="viewport" content="width=device-width, initial-scale=1">
 			<!-- Place favicon.ico in the root directory -->
-			<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+			<link rel="shortcut icon" type="image/x-icon" href="{{ app.request.schemeAndHttpHost }}/images/favicon.ico">
 			<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 			<!-- All css files are included here. -->
 			<!-- Bootstrap fremwork main css -->
 			<link
-			rel="stylesheet" href="css/bootstrap.min.css"> <!-- Owl Carousel main css -->
-			<link rel="stylesheet" href="css/owl.carousel.min.css">
+			rel="stylesheet" href="{{ app.request.schemeAndHttpHost }}/css/bootstrap.min.css"> <!-- Owl Carousel main css -->
+			<link rel="stylesheet" href="{{ app.request.schemeAndHttpHost }}/css/owl.carousel.min.css">
 			<link
-			rel="stylesheet" href="css/owl.theme.default.min.css">
+			rel="stylesheet" href="{{ app.request.schemeAndHttpHost }}/css/owl.theme.default.min.css">
 			<!-- This core.css file contents all plugings css file. -->
 			<link
-			rel="stylesheet" href="css/core.css">
+			rel="stylesheet" href="{{ app.request.schemeAndHttpHost }}/css/core.css">
 			<!-- Theme shortcodes/elements style -->
 			<link
-			rel="stylesheet" href="css/shortcode/shortcodes.css">
+			rel="stylesheet" href="{{ app.request.schemeAndHttpHost }}/css/shortcode/shortcodes.css">
 			<!-- Theme main style -->
 			<link
-			rel="stylesheet" href="css/style.css">
+			rel="stylesheet" href="{{ app.request.schemeAndHttpHost }}/css/style.css">
 			<!-- Responsive css -->
 			<link
-			rel="stylesheet" href="css/responsive.css">
+			rel="stylesheet" href="{{ app.request.schemeAndHttpHost }}/css/responsive.css">
 			<!-- User style -->
-			<link rel="stylesheet" href="css/custom.css">
+			<link rel="stylesheet" href="{{ app.request.schemeAndHttpHost }}/css/custom.css">
 
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		{% endblock %}
@@ -57,7 +57,7 @@
                             <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
                                 <div class="logo">
                                     <a href="index.html">
-                                        <img src="images/logo/logo.png" alt="logo">
+                                        <img src="{{ app.request.schemeAndHttpHost }}/images/logo/logo.png" alt="logo">
                                     </a>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
 																					</ul>
 																				</li>
 																				<li class="drop"><a href="/categories">Category</a></li>
-                                        <li class="drop"><a href="#">Pages</a></li>
+                                        <li class="drop"><a href="/cart">Cart</a></li>
                                         <li><a href="#">Contact</a></li>
                                     </ul>
                                 </nav>
@@ -82,8 +82,8 @@
                                             <li><a href="/">Home</a></li>
                                             <li><a href="/categories">Category</a></li>
                                             <li><a href="/products">Shop</a></li>
-                                            <li><a href="#">Pages</a></li>
-                                            <li><a href="#">Contact</a></li>
+                                            <li><a href="/cart">Shopping Cart</a></li>
+                                        		<li><a href="#">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>                          
@@ -136,21 +136,14 @@
                         <div class="off__contact">
                             <div class="logo">
                                 <a href="index.html">
-                                    <img src="images/logo/logo.png" alt="logo">
+                                    <img src="{{ app.request.schemeAndHttpHost }}/images/logo/logo.png" alt="logo">
                                 </a>
                             </div>
                             <p>Lorem ipsum dolor sit amet consectetu adipisicing elit sed do eiusmod tempor incididunt ut labore.</p>
                         </div>
-                        <ul class="sidebar__thumd">
-                            <li><a href="#"><img src="images/sidebar-img/1.jpg" alt="sidebar images"></a></li>
-                            <li><a href="#"><img src="images/sidebar-img/2.jpg" alt="sidebar images"></a></li>
-                            <li><a href="#"><img src="images/sidebar-img/3.jpg" alt="sidebar images"></a></li>
-                            <li><a href="#"><img src="images/sidebar-img/4.jpg" alt="sidebar images"></a></li>
-                            <li><a href="#"><img src="images/sidebar-img/5.jpg" alt="sidebar images"></a></li>
-                            <li><a href="#"><img src="images/sidebar-img/6.jpg" alt="sidebar images"></a></li>
-                            <li><a href="#"><img src="images/sidebar-img/7.jpg" alt="sidebar images"></a></li>
-                            <li><a href="#"><img src="images/sidebar-img/8.jpg" alt="sidebar images"></a></li>
-                        </ul>
+												<div class="buttons-cart">
+													<a href="/logout">Logout</a>
+												</div>
                         <div class="offset__widget">
                             <div class="offset__single">
                                 <h4 class="offset__title">Language</h4>
@@ -196,7 +189,7 @@
                             <div class="shp__single__product">
                                 <div class="shp__pro__thumb">
                                     <a href="#">
-                                        <img src="images/product/sm-img/1.jpg" alt="product images">
+                                        <img src="{{ app.request.schemeAndHttpHost }}/images/product/sm-img/1.jpg" alt="product images">
                                     </a>
                                 </div>
                                 <div class="shp__pro__details">
@@ -211,7 +204,7 @@
                             <div class="shp__single__product">
                                 <div class="shp__pro__thumb">
                                     <a href="#">
-                                        <img src="images/product/sm-img/2.jpg" alt="product images">
+                                        <img src="{{ app.request.schemeAndHttpHost }}/images/product/sm-img/2.jpg" alt="product images">
                                     </a>
                                 </div>
                                 <div class="shp__pro__details">
@@ -239,7 +232,7 @@
             <!-- End Offset Wrapper -->
 			
             <!-- Start Bradcaump area -->
-            <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
+            <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({{ app.request.schemeAndHttpHost }}/images/bg/2.jpg) no-repeat scroll center center / cover ;">
                 <div class="ht__bradcaump__wrap">
                     <div class="container">
                         <div class="row">
@@ -271,8 +264,8 @@
 							<div class="col-md-3 col-lg-3 col-sm-6">
 								<div class="ft__widget">
 									<div class="ft__logo">
-										<a href="index.html">
-											<img src="images/logo/logo.png" alt="footer logo">
+										<a href="/">
+											<img src="{{ app.request.schemeAndHttpHost }}/images/logo/logo.png" alt="footer logo">
 										</a>
 									</div>
 									<div class="footer-address">
@@ -462,7 +455,7 @@
 								<!-- Start product images -->
 								<div class="product-images">
 									<div class="main-image images">
-										<img alt="big images" src="images/product/big-img/1.jpg">
+										<img alt="big images" src="{{ app.request.schemeAndHttpHost }}/images/product/big-img/1.jpg">
 									</div>
 								</div>
 								<!-- end product images -->
@@ -588,17 +581,17 @@
 
         {% block javascripts %}
             <!-- jquery latest version -->
-            <script src="js/vendor/jquery-1.12.0.min.js"></script>
+            <script src="{{ app.request.schemeAndHttpHost }}/js/vendor/jquery-1.12.0.min.js"></script>
             <!-- Bootstrap framework js -->
-            <script src="js/bootstrap.min.js"></script>
+            <script src="{{ app.request.schemeAndHttpHost }}/js/bootstrap.min.js"></script>
             <!-- All js plugins included in this file. -->
-            <script src="js/plugins.js"></script>
-            <script src="js/slick.min.js"></script>
-            <script src="js/owl.carousel.min.js"></script>
+            <script src="{{ app.request.schemeAndHttpHost }}/js/plugins.js"></script>
+            <script src="{{ app.request.schemeAndHttpHost }}/js/slick.min.js"></script>
+            <script src="{{ app.request.schemeAndHttpHost }}/js/owl.carousel.min.js"></script>
             <!-- Waypoints.min.js. -->
-            <script src="js/waypoints.min.js"></script>
+            <script src="{{ app.request.schemeAndHttpHost }}/js/waypoints.min.js"></script>
             <!-- Main js file that contents all jQuery plugins activation. -->
-            <script src="js/main.js"></script>
+            <script src="{{ app.request.schemeAndHttpHost }}/js/main.js"></script>
         {% endblock %}
 	</body>
 </html>

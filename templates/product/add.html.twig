@@ -45,6 +45,13 @@
 					</div>
 
 					<div class="single-contact-form">
+						{{ form_label (form.brand) }}
+						<div class="contact-box subject">
+							{{ form_widget(form.brand, {'attr': {'placeholder': 'Product brand'}}) }}
+						</div>
+					</div>
+
+					<div class="single-contact-form">
 						{{ form_label (form.category) }}
 						<div class="contact-box subject">
 							{{ form_widget(form.category) }}

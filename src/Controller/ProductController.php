@@ -2,16 +2,19 @@
 
 namespace App\Controller;
 
-use App\Entity\Category;
 use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\SerializerInterface;
+
+use function PHPUnit\Framework\throwException;
 
 class ProductController extends AbstractController
 {
@@ -72,7 +75,6 @@ class ProductController extends AbstractController
 			'title' => "View Product",
 			'product' => $product
 		]);
-
 	}
 
 	/**
@@ -88,6 +90,25 @@ class ProductController extends AbstractController
 			$form->handleRequest($request);
 
 			if ($form->isSubmitted() && $form->isValid()) {
+				$image = $product->getImage();
+
+				//create image a unique name
+				$fileName = md5(uniqid());
+				//get image extends
+				$fileExtension = $image->guessExtension();
+				//merge image name and image extension
+				$imageName = $fileName . '.' . $fileExtension;
+
+				//move upload file to predefined location
+				try {
+					$image->move(
+						$this->getParameter('product_image'),
+						$imageName
+					);
+				} catch (FileException $e) {
+					throwException($e);
+				}
+				$product->setImage($imageName);
 				$entityManager = $this->getDoctrine()->getManager();
 				$entityManager->persist($product);
 				$entityManager->flush();
@@ -99,7 +120,6 @@ class ProductController extends AbstractController
 				'title' => "Add Product",
 				'form' => $form->createView()
 			]);
-			
 		} catch (\Exception $e) {
 			$error = ['ERROR' => $e->getMessage()];
 			$json = json_encode($error);
@@ -119,15 +139,31 @@ class ProductController extends AbstractController
 	public function updateProduct(Request $request, Product $product)
 	{
 		try {
-			
-			// $product = $productRepository->find($id);
-
 			$form = $this->createForm(ProductType::class, $product, [
 				'method' => 'POST',
 			]);
 			$form->handleRequest($request);
 
 			if ($form->isSubmitted() && $form->isValid()) {
+				$image = $product->getImage();
+
+				//create image a unique name
+				$fileName = md5(uniqid());
+				//get image extends
+				$fileExtension = $image->guessExtension();
+				//merge image name and image extension
+				$imageName = $fileName . '.' . $fileExtension;
+
+				//move upload file to predefined location
+				try {
+					$image->move(
+						$this->getParameter('product_image'),
+						$imageName
+					);
+				} catch (FileException $e) {
+					throwException($e);
+				}
+				$product->setImage($imageName);
 				$entityManager = $this->getDoctrine()->getManager();
 				$entityManager->persist($product);
 				$entityManager->flush();
@@ -158,7 +194,7 @@ class ProductController extends AbstractController
 	public function deleteProduct(Product $product)
 	{
 		try {
-			
+
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->remove($product);
 			$entityManager->flush();
@@ -175,5 +211,5 @@ class ProductController extends AbstractController
 				]
 			);
 		}
-	}	
+	}
 }
